@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DIGITAL DETECTIVE | Case #047</title>
+    <meta name="description" content="Every clue matters. Can you solve the case?">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Outfit:wght@400;700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="app">
+        <!-- Home Screen -->
+        <section id="home-screen" class="view active">
+            <div class="glitch-container">
+                <h1 class="glitch" data-text="DIGITAL DETECTIVE">DIGITAL DETECTIVE</h1>
+            </div>
+            <p class="tagline">"Every clue matters. Can you solve the case?"</p>
+            
+            <div class="case-brief">
+                <h2>CASE #047 — THE MISSING PROTOTYPE</h2>
+                <p>An experimental, highly classified AI prototype has vanished from the secure labs of NexusTech. The facility was locked down. Only four people had access. One of them is lying.</p>
+                
+                <div class="case-meta">
+                    <span class="status">STATUS: OPEN</span>
+                    <span class="difficulty">DIFFICULTY: HIGH</span>
+                </div>
+            </div>
+
+            <button id="start-btn" class="primary-btn">START INVESTIGATION</button>
+        </section>
+
+        <!-- Navigation Sidebar -->
+        <nav id="main-nav" class="hidden">
+            <div class="nav-header">
+                <h2>CASE #047</h2>
+                <div class="progress-bar">
+                    <div id="progress-fill"></div>
+                </div>
+                <span id="score-display">Score: 0 / 100</span>
+            </div>
+            <ul>
+                <li data-target="dashboard" class="active">Dashboard</li>
+                <li data-target="evidence">Evidence Room</li>
+                <li data-target="suspects">Suspects</li>
+                <li data-target="timeline">Timeline</li>
+                <li data-target="board">Evidence Board</li>
+                <li data-target="notes">Notes</li>
+                <li data-target="accusation" class="accent-nav">Final Accusation</li>
+            </ul>
+        </nav>
+
+        <!-- Main Content Area -->
+        <main id="main-content" class="hidden">
+            
+            <!-- Dashboard -->
+            <section id="dashboard" class="view">
+                <h2>Investigation Dashboard</h2>
+                <div class="dashboard-grid">
+                    <div class="dash-card" data-target="evidence">
+                        <h3>Evidence Found</h3>
+                        <p id="evidence-count">0 / 8</p>
+                    </div>
+                    <div class="dash-card" data-target="suspects">
+                        <h3>Suspects Profiled</h3>
+                        <p id="suspects-count">0 / 4</p>
+                    </div>
+                    <div class="dash-card" data-target="timeline">
+                        <h3>Timeline Events</h3>
+                        <p id="timeline-count">0 / 5</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Evidence Room -->
+            <section id="evidence" class="view">
+                <h2>Evidence Room</h2>
+                <p class="section-desc">Examine items recovered from the scene.</p>
+                <div class="evidence-grid" id="evidence-grid">
+                    <!-- Populated by JS -->
+                </div>
+            </section>
+
+            <!-- Suspects -->
+            <section id="suspects" class="view">
+                <h2>Suspects</h2>
+                <p class="section-desc">Review profiles of the 4 individuals present during the incident.</p>
+                <div class="suspects-grid" id="suspects-grid">
+                    <!-- Populated by JS -->
+                </div>
+            </section>
+
+            <!-- Timeline -->
+            <section id="timeline" class="view">
+                <h2>Timeline</h2>
+                <p class="section-desc">Reconstruct the events between 8:30 PM and 9:40 PM.</p>
+                <div class="timeline-container" id="timeline-container">
+                    <!-- Populated by JS -->
+                </div>
+            </section>
+
+            <!-- Evidence Board -->
+            <section id="board" class="view">
+                <h2>Evidence Board</h2>
+                <p class="section-desc">Connect the dots.</p>
+                <div class="board-container" id="board-container">
+                    <!-- Connecting canvas and nodes -->
+                    <canvas id="board-canvas"></canvas>
+                    <div id="board-nodes"></div>
+                </div>
+            </section>
+
+            <!-- Notes -->
+            <section id="notes" class="view">
+                <h2>Investigator Notes</h2>
+                <p class="section-desc">Your notes are saved locally to your device.</p>
+                <textarea id="notes-area" placeholder="Type your notes here..."></textarea>
+                <button id="clear-notes-btn" class="secondary-btn">Clear Notes</button>
+            </section>
+
+            <!-- Final Accusation -->
+            <section id="accusation" class="view">
+                <h2 class="accent-text">Final Accusation</h2>
+                <p class="section-desc">Warning: You can only make one accusation. Ensure you have gathered enough evidence.</p>
+                
+                <div class="accusation-form">
+                    <h3>WHO DO YOU ACCUSE?</h3>
+                    <div class="suspect-selection" id="accusation-suspects">
+                        <!-- Populated by JS -->
+                    </div>
+                    <button id="submit-accusation-btn" class="primary-btn disabled" disabled>SUBMIT ACCUSATION</button>
+                </div>
+
+                <div id="accusation-result" class="hidden">
+                    <h2 id="result-title"></h2>
+                    <p id="result-desc"></p>
+                    <button id="reset-btn" class="secondary-btn">Reset Investigation</button>
+                </div>
+            </section>
+
+        </main>
+
+        <!-- Modal Overlay -->
+        <div id="modal-overlay" class="hidden">
+            <div class="modal-content">
+                <button id="close-modal" class="close-btn">&times;</button>
+                <div id="modal-body"></div>
+            </div>
+        </div>
+
+    </div>
+    <script src="data.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
